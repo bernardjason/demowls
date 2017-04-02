@@ -1,9 +1,17 @@
 # demowls
 
-A demo os using Scala with Weblogic to create an EJB for a Tuxedo call and a webservice. Both of these result in some JMS to eventually send a request to Google Gmail API.
+A demo of using Scala with Weblogic to create an EJB for a Tuxedo call and a webservice. Both of these result in some JMS to eventually send a request to Google Gmail API.
+
+You will need to setup Gmail first, see 
+https://developers.google.com/gmail/api/quickstart/java
+
+And then for the very first time run 
+./demojar/src/main/scala/bernardjason/weblogic/demo/demojar/GmailSend.scala
+
+which has a main function that will for the very first time open a browser and grant permissions for app to access Gmail.
+
 
 Demo uses Weblogic 12.2
-
 
 ** to install weblogic plugin (I have Weblogic installed in /software/Oracle/Middleware/Oracle_Home)
 
