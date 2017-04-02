@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ejb-jar version="3.0"
+     xmlns="http://java.sun.com/xml/ns/javaee"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+           http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd">
+  <enterprise-beans>
+    
+    <session>
+        <ejb-name>HelloBean</ejb-name>
+        <ejb-class>ejb3.HelloBean</ejb-class>
+        <session-type>Stateless</session-type>
+        <transaction-type>Container</transaction-type>
+        <ejb-local-ref>
+                <ejb-ref-name>HelloBean</ejb-ref-name>
+                <local>ejb3.HelloLocal</local>
+        </ejb-local-ref>
+        
+    </session>
+
+  </enterprise-beans>
+</ejb-jar>

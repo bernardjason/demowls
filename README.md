@@ -1,4 +1,4 @@
-# demowls"
+# demowls
 
 A demo os using Scala with Weblogic to create an EJB for a Tuxedo call and a webservice. Both of these result in some JMS to eventually send a request to Google Gmail API.
 
@@ -94,7 +94,7 @@ create JMS module and queues
 ```
 
 
-##Tuxedo
+## Tuxedo
 
 the tuxedo bit
 ```

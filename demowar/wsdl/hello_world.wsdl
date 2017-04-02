@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://org.bjason.cxfdemo.hello/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+	name="HelloWorldService" targetNamespace="http://org.bjason.cxfdemo.hello/">
+	<wsdl:types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			xmlns:tns="http://org.bjason.cxfdemo.hello/" elementFormDefault="unqualified"
+			targetNamespace="http://org.bjason.cxfdemo.hello/" version="1.0">
+
+			<xs:element name="sayHi" type="tns:sayHi" />
+
+			<xs:element name="sayHiResponse" type="tns:sayHiResponse" />
+
+			<xs:element name="sayHiToUser" type="tns:sayHiToUser" />
+
+			<xs:element name="bannerHelloUserResponse" type="tns:sayHiToUserResponse" />
+
+			<xs:complexType name="sayHiToUser">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="name" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="sayHiToUserResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="sayHi">
+				<xs:sequence>
+					<xs:element minOccurs="1" name="email" type="xs:string"
+						maxOccurs="1" />
+					<xs:element name="subject" type="xs:string" maxOccurs="1"
+						minOccurs="1"></xs:element>
+					<xs:element name="message" type="xs:string" maxOccurs="1"
+						minOccurs="1"></xs:element>
+				</xs:sequence>
+			</xs:complexType>
+
+			<xs:complexType name="sayHiResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+
+
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="sayHi">
+		<wsdl:part element="tns:sayHi" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="sayHiResponse">
+		<wsdl:part element="tns:sayHiResponse" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+
+	<wsdl:portType name="HelloWorld">
+		<wsdl:operation name="sayHi">
+			<wsdl:input message="tns:sayHi" name="sayHi">
+			</wsdl:input>
+			<wsdl:output message="tns:sayHiResponse" name="sayHiResponse">
+			</wsdl:output>
+		</wsdl:operation>
+  </wsdl:portType>
+	<wsdl:binding name="HelloWorldServiceSoapBinding" type="tns:HelloWorld">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="sayHi">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="sayHi">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="sayHiResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="HelloWorldService">
+		<wsdl:port binding="tns:HelloWorldServiceSoapBinding" name="HelloWorldPort">
+			<soap:address location="http://127.0.0.1:8080/services/hello_world" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

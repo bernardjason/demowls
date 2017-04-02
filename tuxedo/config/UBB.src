@@ -1,0 +1,66 @@
+*RESOURCES
+
+IPCKEY          45050
+
+MASTER          "jasonb-Aspire-V3-771"
+
+MODEL           SHM
+
+LDBAL           Y
+
+MAXACCESSERS    100
+
+MAXSERVERS      100
+
+MAXSERVICES     100
+
+*MACHINES
+
+DEFAULT:
+    APPDIR="/src/weblogic/demowls/tuxedo"
+    TUXCONFIG="/src/weblogic/demowls/tuxedo/config/UBB"
+    TUXDIR="/software/tuxedo/tuxedo12.2.2.0.0"
+    ULOGPFX="/src/weblogic/demowls/tuxedo/logs/ULOG"
+    #TYPE="x86_64"
+
+"jasonb-Aspire-V3-771"
+    LMID="jasonb-Aspire-V3-771"
+
+*GROUPS
+
+DM_GRP
+    GRPNO=10
+    LMID="jasonb-Aspire-V3-771"
+
+TUXEDO_GRP1
+    GRPNO=301
+    LMID="jasonb-Aspire-V3-771"
+
+*SERVERS
+
+DEFAULT:
+    REPLYQ=Y
+    CLOPT="-A"
+    RESTART=Y
+    GRACE=0
+    MAXGEN=10
+
+DMADM
+    SRVGRP=DM_GRP
+    REPLYQ=N
+    SRVID=1000
+    SEQUENCE=1000
+
+GWADM
+    SRVGRP=TUXEDO_GRP1
+    REPLYQ=N
+    SRVID=2000
+    SEQUENCE=2000
+
+GWTDOMAIN
+    SRVGRP=TUXEDO_GRP1
+    REPLYQ=N
+    SRVID=3000
+    SEQUENCE=3000
+
+*SERVICES

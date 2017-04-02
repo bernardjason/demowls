@@ -1,0 +1,4 @@
+# name        number  type    flags   comments
+EMAIL         100     string  -       -  
+SUBJECT       101     string  -       -  
+MESSAGE       102     string  -       -  
